@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\Packs\\atmel\\SAMD51_DFP\\1.2.139\\samd51a\\include\\*",
+                "C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\Packs\\arm\\CMSIS\\5.4.0\\CMSIS\\Core\\Include\\*"
+            ],
+            "defines": [
+            ],
+            "compilerArgs": [
+                "-D__SAMD51J19A__",
+                "-x",
+                "c",
+                "-mthumb",
+                "-DDEBUG",
+                "-Og", "-ffunction-sections", "-mlong-calls", "-g3", "-Wall", "-mcpu=cortex-m4",
+                "-mfloat-abi=softfp", "-mfpu=fpv4-sp-d16"
+            ],
+            "compilerPath": "C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\bin\\arm-none-eabi-gcc.exe",
+            "cStandard": "c99",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4
+}

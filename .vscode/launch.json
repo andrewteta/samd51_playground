@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "cortex-debug",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "runToEntryPoint": "main",
+            "servertype": "openocd",
+            "serverpath": "C:\\Users\\andre\\openocd\\bin\\openocd.exe",
+            "configFiles": [
+                "C:\\Users\\andre\\openocd\\scripts\\interface\\ftdi\\ft232h-module-swd.cfg",
+                "C:\\Users\\andre\\openocd\\scripts\\target\\atsame5x.cfg",
+            ],
+            "executable": "${workspaceFolder}\\samd51j19a_1\\Debug\\samd51j19a_1.elf",
+            "gdbPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin\\arm-none-eabi-gdb.exe",
+            "preLaunchTask": "build",
+            "preRestartCommands": [
+                "load"
+            ]
+            // "overrideLaunchCommands": [
+            //     "monitor reset init",
+            //     "file ./samd51j19a_1/Debug/samd51j19a_1.elf",
+            //     "monitor flash write_image erase unlock ./samd51j19a_1/Debug/samd51j19a_1.elf",
+            //     "monitor reset"
+            // ],
+            // "preRestartCommands": [
+            //     "monitor reset init",
+            //     "file ./samd51j19a_1/Debug/samd51j19a_1.elf",
+            // ],
+            // "showDevDebugOutput": "parsed"
+        }
+    ]
+}
