@@ -2,13 +2,21 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "project_name",
+            "type": "promptString",
+            "description": "Name of Atmel Studio project",
+            "default": "samd51j19a_1"
+        }
+    ],
     "tasks": [
         {
             "label": "build",
             "type": "shell",
-            "command": "\"C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\shellUtils\\make.exe\" all --jobs 8 --output-sync",
+            "command": "make all -j --output-sync",
             "options": {
-                "cwd": "${workspaceFolder}\\samd51j19a_1\\Debug"
+                "cwd": "${workspaceFolder}\\${input:project_name}\\Debug"
             },
             // "dependsOn": "clean",
             "problemMatcher": "$gcc",
@@ -20,23 +28,23 @@
         {
             "label": "clean",
             "type": "shell",
-            "command": "\"C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\shellUtils\\make.exe\" clean",
+            "command": "make clean",
             "options": {
-                "cwd": "${workspaceFolder}\\samd51j19a_1\\Debug"
+                "cwd": "${workspaceFolder}\\${input:project_name}\\Debug"
             },
             "problemMatcher": "$gcc"
         },
         {
             "label": "conv2uf2",
             "type": "shell",
-            "command": "${workspaceFolder}\\samd51j19a_1\\conv2uf2.bat",
+            "command": "${workspaceFolder}\\${input:project_name}\\conv2uf2.bat",
             "dependsOn": "build",
             "problemMatcher": []
         },
         {
             "label": "flash",
             "type": "shell",
-            "command": "copy \"C:\\Users\\andre\\OneDrive\\Documents\\_dev\\samd\\samd51j19a_1\\samd51j19a_1\\Debug\\samd51j19a_1.uf2\" \"D:\\samd51j19a_1.uf2\"",
+            "command": "copy \"${workspaceFolder}\\${input:project_name}\\Debug\\${input:project_name}.uf2\" \"D:\\${input:project_name}.uf2\"",
             "dependsOn": "conv2uf2",
             "problemMatcher": [],
             "group": "build"

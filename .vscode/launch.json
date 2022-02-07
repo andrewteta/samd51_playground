@@ -3,6 +3,20 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
+    "inputs": [
+        {
+            "id": "project_name",
+            "type": "promptString",
+            "description": "Name of Atmel Studio project",
+            "default": "samd51j19a_1"
+        },
+        {
+            "id": "openocd_path",
+            "type": "promptString",
+            "default": "C:\\Users\\andre\\openocd\\bin",
+            "description": "Path to OpenOCD executable"
+        }
+    ],
     "configurations": [
         {
             "name": "Debug",
@@ -11,28 +25,17 @@
             "cwd": "${workspaceFolder}",
             "runToEntryPoint": "main",
             "servertype": "openocd",
-            "serverpath": "C:\\Users\\andre\\openocd\\bin\\openocd.exe",
+            // "serverpath": "${input:openocd_path}\\openocd",
             "configFiles": [
-                "C:\\Users\\andre\\openocd\\scripts\\interface\\ftdi\\ft232h-module-swd.cfg",
-                "C:\\Users\\andre\\openocd\\scripts\\target\\atsame5x.cfg",
+                "${input:openocd_path}\\..\\scripts\\interface\\ftdi\\ft232h-module-swd.cfg",
+                "${input:openocd_path}\\..\\scripts\\target\\atsame5x.cfg",
             ],
-            "executable": "${workspaceFolder}\\samd51j19a_1\\Debug\\samd51j19a_1.elf",
-            "gdbPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin\\arm-none-eabi-gdb.exe",
+            "executable": "${workspaceFolder}\\${input:project_name}\\Debug\\${input:project_name}.elf",
+            "gdbPath": "arm-none-eabi-gdb",
             "preLaunchTask": "build",
             "preRestartCommands": [
                 "load"
             ]
-            // "overrideLaunchCommands": [
-            //     "monitor reset init",
-            //     "file ./samd51j19a_1/Debug/samd51j19a_1.elf",
-            //     "monitor flash write_image erase unlock ./samd51j19a_1/Debug/samd51j19a_1.elf",
-            //     "monitor reset"
-            // ],
-            // "preRestartCommands": [
-            //     "monitor reset init",
-            //     "file ./samd51j19a_1/Debug/samd51j19a_1.elf",
-            // ],
-            // "showDevDebugOutput": "parsed"
         }
     ]
 }
