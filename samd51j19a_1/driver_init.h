@@ -29,7 +29,6 @@ extern "C" {
 
 #include <hal_qspi_sync.h>
 
-#include <hal_timer.h>
 #include <hal_spi_m_sync.h>
 
 #include <hal_i2c_m_sync.h>
@@ -41,6 +40,8 @@ extern "C" {
 #include <hal_delay.h>
 #include <hal_pwm.h>
 #include <hpl_tc_base.h>
+#include <hal_timer.h>
+#include <hpl_tcc.h>
 
 #include <hal_rand_sync.h>
 
@@ -50,7 +51,6 @@ extern struct dac_sync_descriptor DAC_0;
 extern struct crc_sync_descriptor CRC_0;
 
 extern struct qspi_sync_descriptor  QUAD_SPI_0;
-extern struct timer_descriptor      TIMER_0;
 extern struct spi_m_sync_descriptor SPI_0;
 
 extern struct i2c_m_sync_desc I2C_0;
@@ -60,6 +60,8 @@ extern struct usart_sync_descriptor USART_0;
 extern struct usart_sync_descriptor USART_1;
 
 extern struct pwm_descriptor PWM_0;
+
+extern struct timer_descriptor TIMER_0;
 
 extern struct rand_sync_desc RAND_0;
 
@@ -96,6 +98,9 @@ void delay_driver_init(void);
 void PWM_0_PORT_init(void);
 void PWM_0_CLOCK_init(void);
 void PWM_0_init(void);
+
+void TIMER_0_CLOCK_init(void);
+void TIMER_0_init(void);
 
 void RAND_0_CLOCK_init(void);
 void RAND_0_init(void);

@@ -4,7 +4,7 @@
 
 static void LED_Timer_cb(const struct timer_task *const timer_task)
 {
-		gpio_toggle_pin_level(LED);
+	gpio_toggle_pin_level(LED);
 }
 
 int main(void)

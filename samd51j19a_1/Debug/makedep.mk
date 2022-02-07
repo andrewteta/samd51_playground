@@ -84,11 +84,11 @@ hpl\qspi\hpl_qspi.c
 
 hpl\ramecc\hpl_ramecc.c
 
-hpl\rtc\hpl_rtc.c
-
 hpl\sercom\hpl_sercom.c
 
 hpl\systick\hpl_systick.c
+
+hpl\tcc\hpl_tcc.c
 
 hpl\tc\hpl_tc.c
 

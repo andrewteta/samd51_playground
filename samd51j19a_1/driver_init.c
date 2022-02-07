@@ -14,7 +14,6 @@
 #include <hpl_adc_base.h>
 
 struct crc_sync_descriptor   CRC_0;
-struct timer_descriptor      TIMER_0;
 struct spi_m_sync_descriptor SPI_0;
 
 struct adc_sync_descriptor ADC_0;
@@ -30,6 +29,8 @@ struct usart_sync_descriptor USART_0;
 struct usart_sync_descriptor USART_1;
 
 struct pwm_descriptor PWM_0;
+
+struct timer_descriptor TIMER_0;
 
 struct rand_sync_desc RAND_0;
 
@@ -333,18 +334,6 @@ void QUAD_SPI_0_init(void)
 	QUAD_SPI_0_PORT_init();
 }
 
-void TIMER_0_CLOCK_init(void)
-{
-	hri_mclk_set_APBBMASK_TCC0_bit(MCLK);
-	hri_gclk_write_PCHCTRL_reg(GCLK, TCC0_GCLK_ID, CONF_GCLK_TCC0_SRC | (1 << GCLK_PCHCTRL_CHEN_Pos));
-}
-
-void TIMER_0_init(void)
-{
-	TIMER_0_CLOCK_init();
-	timer_init(&TIMER_0, TCC0, _tcc_get_timer());
-}
-
 void SPI_0_PORT_init(void)
 {
 
@@ -509,6 +498,18 @@ void PWM_0_init(void)
 	pwm_init(&PWM_0, TC0, _tc_get_pwm());
 }
 
+void TIMER_0_CLOCK_init(void)
+{
+	hri_mclk_set_APBBMASK_TCC0_bit(MCLK);
+	hri_gclk_write_PCHCTRL_reg(GCLK, TCC0_GCLK_ID, CONF_GCLK_TCC0_SRC | (1 << GCLK_PCHCTRL_CHEN_Pos));
+}
+
+void TIMER_0_init(void)
+{
+	TIMER_0_CLOCK_init();
+	timer_init(&TIMER_0, TCC0, _tcc_get_timer());
+}
+
 void RAND_0_CLOCK_init(void)
 {
 	hri_mclk_set_APBCMASK_TRNG_bit(MCLK);
@@ -532,8 +533,6 @@ void system_init(void)
 
 	QUAD_SPI_0_init();
 
-	TIMER_0_init();
-
 	SPI_0_init();
 
 	I2C_0_init();
@@ -545,6 +544,8 @@ void system_init(void)
 	delay_driver_init();
 
 	PWM_0_init();
+
+	TIMER_0_init();
 
 	RAND_0_init();
 }

@@ -108,11 +108,9 @@
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/utils/include/events.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/utils/include/utils.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/utils/include/utils_assert.h"/>
-        <file category="header" condition="ARMCC, GCC, IAR" name="hal/utils/include/utils_decrement_macro.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/utils/include/utils_event.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/utils/include/utils_increment_macro.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/utils/include/utils_list.h"/>
-        <file category="header" condition="ARMCC, GCC, IAR" name="hal/utils/include/utils_recursion_macro.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/utils/include/utils_repeat_macro.h"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="hal/utils/src/utils_assert.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="hal/utils/src/utils_event.c"/>
@@ -167,7 +165,6 @@
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/include/hal_usart_sync.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/include/hpl_adc_async.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/include/hpl_adc_sync.h"/>
-        <file category="header" condition="ARMCC, GCC, IAR" name="hal/include/hpl_calendar.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/include/hpl_dac_async.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/include/hpl_dac_sync.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hal/include/hpl_missing_features.h"/>
@@ -207,12 +204,12 @@
         <file category="header" condition="ARMCC, GCC, IAR" name="hpl/port/hpl_gpio_base.h"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="hpl/qspi/hpl_qspi.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="hpl/ramecc/hpl_ramecc.c"/>
-        <file category="source" condition="ARMCC, GCC, IAR" name="hpl/rtc/hpl_rtc.c"/>
-        <file category="header" condition="ARMCC, GCC, IAR" name="hpl/rtc/hpl_rtc_base.h"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="hpl/sercom/hpl_sercom.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="hpl/systick/hpl_systick.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="hpl/tc/hpl_tc.c"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="hpl/tc/hpl_tc_base.h"/>
+        <file category="source" condition="ARMCC, GCC, IAR" name="hpl/tcc/hpl_tcc.c"/>
+        <file category="header" condition="ARMCC, GCC, IAR" name="hpl/tcc/hpl_tcc.h"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="hpl/trng/hpl_trng.c"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="atmel_start.h"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="atmel_start.c"/>
@@ -226,10 +223,10 @@
         <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/hpl_oscctrl_config.h"/>
         <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/hpl_port_config.h"/>
         <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/hpl_qspi_config.h"/>
-        <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/hpl_rtc_config.h"/>
         <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/hpl_sercom_config.h"/>
         <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/hpl_systick_config.h"/>
         <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/hpl_tc_config.h"/>
+        <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/hpl_tcc_config.h"/>
         <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/hpl_trng_config.h"/>
         <file attr="config" category="header" condition="ARMCC, GCC, IAR" name="config/peripheral_clk_config.h"/>
         <file category="include" condition="ARMCC, GCC, IAR" name=""/>
@@ -252,10 +249,10 @@
         <file category="include" condition="ARMCC, GCC, IAR" name="hpl/port"/>
         <file category="include" condition="ARMCC, GCC, IAR" name="hpl/qspi"/>
         <file category="include" condition="ARMCC, GCC, IAR" name="hpl/ramecc"/>
-        <file category="include" condition="ARMCC, GCC, IAR" name="hpl/rtc"/>
         <file category="include" condition="ARMCC, GCC, IAR" name="hpl/sercom"/>
         <file category="include" condition="ARMCC, GCC, IAR" name="hpl/systick"/>
         <file category="include" condition="ARMCC, GCC, IAR" name="hpl/tc"/>
+        <file category="include" condition="ARMCC, GCC, IAR" name="hpl/tcc"/>
         <file category="include" condition="ARMCC, GCC, IAR" name="hpl/trng"/>
         <file category="include" condition="ARMCC, GCC, IAR" name="hri"/>
         <file category="include" condition="ARMCC, GCC, IAR" name=""/>
