@@ -53,6 +53,72 @@ extern "C" {
  * \name HPL functions
  */
 //@{
+/**
+ * \brief Initialize TCC
+ *
+ * This function does low level TCC configuration.
+ *
+ * \param[in] device The pointer to PWM device instance
+ * \param[in] hw The pointer to hardware instance
+ *
+ * \return Initialization status.
+ */
+int32_t _tcc_timer_init(struct _timer_device *const device, void *const hw);
+
+/**
+ * \brief De-initialize TCC
+ *
+ * \param[in] device The pointer to TCC device instance
+ */
+void _tcc_timer_deinit(struct _timer_device *const device);
+
+/**
+ * \brief Start hardware timer
+ *
+ * \param[in] device The pointer to TCC device instance
+ */
+void _tcc_timer_start(struct _timer_device *const device);
+
+/**
+ * \brief Stop hardware timer
+ *
+ * \param[in] device The pointer to TCC device instance
+ */
+void _tcc_timer_stop(struct _timer_device *const device);
+
+/**
+ * \brief Set timer period
+ *
+ * \param[in] device The pointer to TCC device instance
+ */
+void _tcc_timer_set_period(struct _timer_device *const device, const uint32_t clock_cycles);
+
+/**
+ * \brief Retrieve timer period
+ *
+ * \param[in] device The pointer to TCC device instance
+ *
+ * \return Timer period
+ */
+uint32_t _tcc_timer_get_period(const struct _timer_device *const device);
+
+/**
+ * \brief Check if timer is running
+ *
+ * \param[in] device The pointer to TCC device instance
+ *
+ * \return Check status.
+ * \retval true The given timer is running
+ * \retval false The given timer is not running
+ */
+bool _tcc_timer_is_started(const struct _timer_device *const device);
+
+/**
+ * \brief Set timer IRQ
+ *
+ * \param[in] device The pointer to TCC device instance
+ */
+void _tcc_timer_set_irq(struct _timer_device *const device);
 
 /**
  * \brief Retrieve timer helper functions

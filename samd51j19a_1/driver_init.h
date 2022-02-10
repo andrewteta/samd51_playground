@@ -41,6 +41,8 @@ extern "C" {
 #include <hal_pwm.h>
 #include <hpl_tc_base.h>
 #include <hal_timer.h>
+#include <hpl_tc_base.h>
+#include <hal_timer.h>
 #include <hpl_tcc.h>
 
 #include <hal_rand_sync.h>
@@ -59,7 +61,8 @@ extern struct usart_sync_descriptor USART_0;
 
 extern struct usart_sync_descriptor USART_1;
 
-extern struct pwm_descriptor PWM_0;
+extern struct pwm_descriptor   PWM_0;
+extern struct timer_descriptor TIMER_1;
 
 extern struct timer_descriptor TIMER_0;
 

@@ -15,6 +15,7 @@
 
 struct crc_sync_descriptor   CRC_0;
 struct spi_m_sync_descriptor SPI_0;
+struct timer_descriptor      TIMER_1;
 
 struct adc_sync_descriptor ADC_0;
 
@@ -498,6 +499,19 @@ void PWM_0_init(void)
 	pwm_init(&PWM_0, TC0, _tc_get_pwm());
 }
 
+/**
+ * \brief Timer initialization function
+ *
+ * Enables Timer peripheral, clocks and initializes Timer driver
+ */
+static void TIMER_1_init(void)
+{
+	hri_mclk_set_APBAMASK_TC1_bit(MCLK);
+	hri_gclk_write_PCHCTRL_reg(GCLK, TC1_GCLK_ID, CONF_GCLK_TC1_SRC | (1 << GCLK_PCHCTRL_CHEN_Pos));
+
+	timer_init(&TIMER_1, TC1, _tc_get_timer());
+}
+
 void TIMER_0_CLOCK_init(void)
 {
 	hri_mclk_set_APBBMASK_TCC0_bit(MCLK);
@@ -545,6 +559,7 @@ void system_init(void)
 
 	PWM_0_init();
 
+	TIMER_1_init();
 	TIMER_0_init();
 
 	RAND_0_init();

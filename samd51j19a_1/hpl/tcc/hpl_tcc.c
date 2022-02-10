@@ -96,6 +96,20 @@ static struct tcc_cfg _cfgs[1] = {
 static struct _timer_device *_tcc0_dev = NULL;
 
 /**
+ * \brief Set of pointer to hal_timer helper functions
+ */
+static struct _timer_hpl_interface _tcc_timer_functions = {
+    _tcc_timer_init,
+    _tcc_timer_deinit,
+    _tcc_timer_start,
+    _tcc_timer_stop,
+    _tcc_timer_set_period,
+    _tcc_timer_get_period,
+    _tcc_timer_is_started,
+    _tcc_timer_set_irq,
+};
+
+/**
  * \brief Init irq param with the given tcc hardware instance
  */
 static void _tcc_init_irq_param(const void *const hw, void *dev)
@@ -107,7 +121,7 @@ static void _tcc_init_irq_param(const void *const hw, void *dev)
 /**
  * \brief Initialize TCC
  */
-int32_t _timer_init(struct _timer_device *const device, void *const hw)
+int32_t _tcc_timer_init(struct _timer_device *const device, void *const hw)
 {
 	struct tcc_cfg *cfg = _get_tcc_cfg(hw);
 	if (cfg == NULL) {
@@ -142,7 +156,7 @@ int32_t _timer_init(struct _timer_device *const device, void *const hw)
 /**
  * \brief De-initialize TCC
  */
-void _timer_deinit(struct _timer_device *const device)
+void _tcc_timer_deinit(struct _timer_device *const device)
 {
 	void *const     hw  = device->hw;
 	struct tcc_cfg *cfg = _get_tcc_cfg(hw);
@@ -155,35 +169,35 @@ void _timer_deinit(struct _timer_device *const device)
 /**
  * \brief Start hardware timer
  */
-void _timer_start(struct _timer_device *const device)
+void _tcc_timer_start(struct _timer_device *const device)
 {
 	hri_tcc_set_CTRLA_ENABLE_bit(device->hw);
 }
 /**
  * \brief Stop hardware timer
  */
-void _timer_stop(struct _timer_device *const device)
+void _tcc_timer_stop(struct _timer_device *const device)
 {
 	hri_tcc_clear_CTRLA_ENABLE_bit(device->hw);
 }
 /**
  * \brief Set timer period
  */
-void _timer_set_period(struct _timer_device *const device, const uint32_t clock_cycles)
+void _tcc_timer_set_period(struct _timer_device *const device, const uint32_t clock_cycles)
 {
 	hri_tcc_write_PER_reg(device->hw, clock_cycles);
 }
 /**
  * \brief Retrieve timer period
  */
-uint32_t _timer_get_period(const struct _timer_device *const device)
+uint32_t _tcc_timer_get_period(const struct _timer_device *const device)
 {
 	return hri_tcc_read_PER_reg(device->hw);
 }
 /**
  * \brief Check if timer is running
  */
-bool _timer_is_started(const struct _timer_device *const device)
+bool _tcc_timer_is_started(const struct _timer_device *const device)
 {
 	return hri_tcc_get_CTRLA_ENABLE_bit(device->hw);
 }
@@ -193,7 +207,7 @@ bool _timer_is_started(const struct _timer_device *const device)
  */
 struct _timer_hpl_interface *_tcc_get_timer(void)
 {
-	return NULL;
+	return &_tcc_timer_functions;
 }
 
 /**
@@ -208,7 +222,7 @@ struct _pwm_hpl_interface *_tcc_get_pwm(void)
  *
  * \param[in] hw The pointer to hardware instance
  */
-void _timer_set_irq(struct _timer_device *const device)
+void _tcc_timer_set_irq(struct _timer_device *const device)
 {
 	void *const     hw  = device->hw;
 	struct tcc_cfg *cfg = _get_tcc_cfg(hw);
