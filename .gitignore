@@ -18,3 +18,4 @@ samd51j19a_1/Debug/samd51j19a_1.lss
 samd51j19a_1/Debug/samd51j19a_1.map
 samd51j19a_1/Debug/samd51j19a_1.srec
 .vscode/.cortex-debug.registers.state.json
+.vscode/.cortex-debug.peripherals.state.json

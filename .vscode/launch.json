@@ -26,6 +26,7 @@
             "runToEntryPoint": "main",
             "servertype": "openocd",
             // "serverpath": "${input:openocd_path}\\openocd",
+            "svdFile": "${workspaceFolder}\\${input:project_name}\\ATSAMD51J19A.svd",
             "configFiles": [
                 "${input:openocd_path}\\..\\scripts\\interface\\ftdi\\ft232h-module-swd.cfg",
                 "${input:openocd_path}\\..\\scripts\\target\\atsame5x.cfg",
